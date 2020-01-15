@@ -65,7 +65,7 @@
     <Content Include="Photo_Album2\static\scripts\respond.min.js" />
     <Content Include="Photo_Album2\static\scripts\_references.js" />
     <Content Include="Photo_Album2\templates\about.html" />
-    <Content Include="Photo_Album2\templates\contact.html" />
+    <Content Include="Photo_Album2\templates\photobook.html" />
     <Content Include="Photo_Album2\templates\index.html" />
     <Content Include="Photo_Album2\templates\layout.html" />
   </ItemGroup>

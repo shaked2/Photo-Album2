@@ -16,14 +16,14 @@ def home():
         year=datetime.now().year,
     )
 
-@app.route('/contact')
+@app.route('/photobook')
 def contact():
     """Renders the contact page."""
     return render_template(
-        'contact.html',
+        'photobook.html',
         title='Photo Album',
         year=datetime.now().year,
-        message='Your contact page.'
+        message='Your photo album.'
     )
 
 @app.route('/about')
