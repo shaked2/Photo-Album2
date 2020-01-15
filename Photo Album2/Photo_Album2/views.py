@@ -16,11 +16,11 @@ def home():
         year=datetime.now().year,
     )
 
-@app.route('/photobook')
+@app.route('/contact')
 def contact():
     """Renders the contact page."""
     return render_template(
-        'photobook.html',
+        'contact.html',
         title='Photo Album',
         year=datetime.now().year,
         message='Your photo album.'
@@ -31,7 +31,20 @@ def about():
     """Renders the about page."""
     return render_template(
         'about.html',
-        title='About',
+        title='Photo Album',
         year=datetime.now().year,
         message='Your application description page.'
+    )
+
+
+
+
+@app.route('/photos')
+def photos():
+    """Renders the about page."""
+    return render_template(
+        'photobook.html',
+        title='Photo Album',
+        year=datetime.now().year,
+        message='photos of wolfs'
     )
