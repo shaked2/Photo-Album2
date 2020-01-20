@@ -4,7 +4,22 @@ Routes and views for the flask application.
 
 from datetime import datetime
 from flask import render_template
+import pandas as pd
 from Photo_Album2 import app
+
+import json 
+#import requests
+
+import io
+import base64
+
+from os import path
+
+from flask   import Flask, render_template, flash, request
+from wtforms import Form, BooleanField, StringField, PasswordField, validators
+from wtforms import TextField, TextAreaField, SubmitField, SelectField, DateField
+from wtforms import ValidationError
+
 from Photo_Album2.Models.QueryFormStructure import QueryFormStructure
 
 @app.route('/')

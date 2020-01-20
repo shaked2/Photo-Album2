@@ -38,7 +38,7 @@
   <ItemGroup>
     <Folder Include="Photo_Album2\" />
     <Folder Include="Photo_Album2\Models\" />
-    <Folder Include="Photo_Album2\Data\" />
+    <Folder Include="Photo_Album2\static\Data\" />
     <Folder Include="Photo_Album2\static\" />
     <Folder Include="Photo_Album2\static\content\" />
     <Folder Include="Photo_Album2\static\fonts\" />
@@ -46,7 +46,7 @@
     <Folder Include="Photo_Album2\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Photo_Album2\Data\capitals.csv" />
+    <Content Include="Photo_Album2\static\Data\capitals.csv" />
     <Content Include="Photo_Album2\templates\query.html" />
     <Content Include="requirements.txt" />
     <Content Include="Photo_Album2\static\content\bootstrap.css" />
