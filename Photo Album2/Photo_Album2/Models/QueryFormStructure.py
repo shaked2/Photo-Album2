@@ -6,5 +6,5 @@ from wtforms.validators import DataRequired
 
 class QueryFormStructure(FlaskForm):
     """This class is the list of the fields that will participate in our form"""
-    name   = StringField('Country Name?)' , validators = [DataRequired()])
+    name   = StringField(('Country Name?') , validators = [DataRequired()])
     submit = SubmitField('Submit')
