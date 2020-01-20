@@ -28,12 +28,17 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Photo_Album2\Models\QueryFormStructure.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="Photo_Album2\__init__.py" />
     <Compile Include="Photo_Album2\views.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Photo_Album2\" />
+    <Folder Include="Photo_Album2\Models\" />
+    <Folder Include="Photo_Album2\Data\" />
     <Folder Include="Photo_Album2\static\" />
     <Folder Include="Photo_Album2\static\content\" />
     <Folder Include="Photo_Album2\static\fonts\" />
@@ -41,6 +46,8 @@
     <Folder Include="Photo_Album2\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Photo_Album2\Data\capitals.csv" />
+    <Content Include="Photo_Album2\templates\query.html" />
     <Content Include="requirements.txt" />
     <Content Include="Photo_Album2\static\content\bootstrap.css" />
     <Content Include="Photo_Album2\static\content\bootstrap.min.css" />
