@@ -62,7 +62,7 @@ def photos():
         'photobook.html',
         title='Photo Album',
         year=datetime.now().year,
-        message='photos of wolfs' 
+        message='photos of wolves' 
     )
 
 @app.route('/Query', methods=['GET', 'POST'])
@@ -89,7 +89,7 @@ def Query():
             form = form, 
             name = capital, 
             raw_data_table = raw_data_table,
-            title='Query by the user',
+            title='Query by Shaked',
             year=datetime.now().year,
-            message='This page will use the web forms to get user input'
+            message='Enter a name of a state and get the capital of that place '
         )
