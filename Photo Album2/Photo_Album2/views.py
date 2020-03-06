@@ -47,9 +47,9 @@ def about():
     """Renders the about page."""
     return render_template(
         'about.html',
-        title='Photo Album',
+        title='End project Tichonet',
         year=datetime.now().year,
-        message='Your application description page.'
+        message='I did this project half the time in school and half in my home, its for my end year project in tichonet grade 10. its about the views in youtube in kpop videos and how it chamges from day to day, or even from a few years ago. '
     )
 
 
