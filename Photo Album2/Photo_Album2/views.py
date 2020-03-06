@@ -39,9 +39,8 @@ def contact():
         'contact.html',
         title='Photo Album',
         year=datetime.now().year,
-        message='Your photo album.'
+        message='My name is Shaked, contact with phone: 0586020766 , gmail: shakedlevy200@gmail.com'
     )
-
 @app.route('/about')
 def about():
     """Renders the about page."""
