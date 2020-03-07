@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Photo_Album2\static\Data\capitals.csv" />
+    <Content Include="Photo_Album2\templates\Contact.html" />
     <Content Include="Photo_Album2\templates\query.html" />
     <Content Include="Photo_Album2\templates\Data.html" />
     <Content Include="requirements.txt" />
