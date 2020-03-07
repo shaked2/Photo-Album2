@@ -37,7 +37,7 @@ def contact():
     """Renders the contact page."""
     return render_template(
         'contact.html',
-        title='Photo Album',
+        title='Contacts',
         year=datetime.now().year,
         message='My name is Shaked, contact with phone: 0586020766 , gmail: shakedlevy200@gmail.com'
     )
@@ -94,11 +94,11 @@ def Query():
         )
 
 @app.route('/data')
-def photos():
+def data():
     """Renders the about page."""
     return render_template(
         'data.html',
         title='data Model',
         year=datetime.now().year,
-        message='Explanatons of the data ' 
+        message=' Explanatons of the data ' 
     )
