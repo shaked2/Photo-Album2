@@ -92,3 +92,13 @@ def Query():
             year=datetime.now().year,
             message='Enter a name of a state and get the capital of that place '
         )
+
+@app.route('/data')
+def photos():
+    """Renders the about page."""
+    return render_template(
+        'data.html',
+        title='data Model',
+        year=datetime.now().year,
+        message='Explanatons of the data ' 
+    )
