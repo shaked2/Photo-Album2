@@ -1,15 +1,16 @@
 """
-This script runs the Photo_Album2 application using a development server.
+This script runs the YearEndProject application using a development server.
 """
 
 from os import environ
-from Photo_Album2 import app
+from YearEndProject import app
 
-if __name__ == '__main__':
+if name == 'main':
     HOST = environ.get('SERVER_HOST', 'localhost')
     try:
         PORT = int(environ.get('SERVER_PORT', '5555'))
     except ValueError:
         PORT = 5555
+
     app.config['SECRET_KEY'] = 'All You Need Is Love Ta ta ta ta ta'
     app.run(HOST, PORT)

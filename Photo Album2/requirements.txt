@@ -1,4 +1,6 @@
-Flask<1
-Flask_wtf
+Flask
 Pandas
+MatPlotLib
+Flask_wtf
+requests
 
