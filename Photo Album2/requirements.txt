@@ -1,6 +1,4 @@
-Flask
-Pandas
-MatPlotLib
+Flask<1
 Flask_wtf
-requests
+Pandas
 
