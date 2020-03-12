@@ -32,9 +32,9 @@ from wtforms import TextField, TextAreaField, SubmitField, SelectField, DateFiel
 from wtforms import ValidationError
 
 
-from YearEndProject.Models.QueryFormStructure import QueryFormStructure 
-from YearEndProject.Models.QueryFormStructure import LoginFormStructure 
-from YearEndProject.Models.QueryFormStructure import UserRegistrationFormStructure 
+from Photo_Album2.Models.QueryFormStructure import QueryFormStructure 
+from Photo_Album2.Models.QueryFormStructure import LoginFormStructure 
+from Photo_Album2.Models.QueryFormStructure import UserRegistrationFormStructure 
 
 db_Functions = create_LocalDatabaseServiceRoutines()
 
@@ -162,3 +162,28 @@ def Login():
         repository_name='Pandas',
         )
 
+@app.route('/DataModel')
+def DataModel():
+    """Renders the contact page."""
+    return render_template(
+        'DataModel.html',
+        title='This is my Data Model page abou UFO',
+        year=datetime.now().year,
+        message='In this page we will display the datasets we are going to use in order to answer ARE THERE UFOs'
+    )
+
+@app.route('/DataSet')
+def DataSet():
+
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\Allkpopidols2.csv'))
+    raw_data_table = df.to_html(classes = 'table table-hover')
+
+
+    """Renders the contact page."""
+    return render_template(
+        'DataSet1.html',
+        title='This is Data Set 1 page',
+        raw_data_table = raw_data_table,
+        year=datetime.now().year,
+        message='In this page we will display the datasets we are going to use in order to answer ARE THERE UFOs'
+    )

@@ -3,9 +3,11 @@ This script runs the YearEndProject application using a development server.
 """
 
 from os import environ
-from YearEndProject import app
+from Photo_Album2 import app
 
-if name == 'main':
+print("t")
+
+if __name__ == '__main__':
     HOST = environ.get('SERVER_HOST', 'localhost')
     try:
         PORT = int(environ.get('SERVER_PORT', '5555'))
