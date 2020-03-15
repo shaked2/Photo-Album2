@@ -77,7 +77,7 @@ def photos():
         'photobook.html',
         title='Photo Album',
         year=datetime.now().year,
-        message='photos of wolves' 
+        message='photos of bts' 
     )
 
 @app.route('/Query', methods=['GET', 'POST'])
