@@ -1,0 +1,123 @@
+﻿t
+ * Running on http://localhost:59735/ (Press CTRL+C to quit)
+The thread 0x2 has exited with code 0 (0x0).
+127.0.0.1 - - [12/Apr/2020 16:39:54] "GET / HTTP/1.1" 200 -
+The thread 0x3 has exited with code 0 (0x0).
+127.0.0.1 - - [12/Apr/2020 16:39:54] "GET /static/content/bootstrap.min.css HTTP/1.1" 200 -
+The thread 0x4 has exited with code 0 (0x0).
+127.0.0.1 - - [12/Apr/2020 16:39:54] "GET /static/content/site.css HTTP/1.1" 200 -
+The thread 0x5 has exited with code 0 (0x0).
+127.0.0.1 - - [12/Apr/2020 16:39:54] "GET /static/scripts/modernizr-2.6.2.js HTTP/1.1" 200 -
+The thread 0x6 has exited with code 0 (0x0).
+127.0.0.1 - - [12/Apr/2020 16:39:54] "GET /static/scripts/jquery-1.10.2.js HTTP/1.1" 200 -
+127.0.0.1 - - [12/Apr/2020 16:39:54] "GET /static/scripts/bootstrap.js HTTP/1.1" 200 -
+The thread 0x8 has exited with code 0 (0x0).
+The thread 0x7 has exited with code 0 (0x0).
+127.0.0.1 - - [12/Apr/2020 16:39:55] "GET /static/scripts/respond.js HTTP/1.1" 200 -
+The thread 0x9 has exited with code 0 (0x0).
+127.0.0.1 - - [12/Apr/2020 16:39:55] "GET /favicon.ico HTTP/1.1" 404 -
+The thread 0xa has exited with code 0 (0x0).
+127.0.0.1 - - [12/Apr/2020 16:40:00] "GET /data HTTP/1.1" 200 -
+The thread 0xb has exited with code 0 (0x0).
+[2020-04-12 16:40:02,029] ERROR in app: Exception on /DataSet [GET]
+Traceback (most recent call last):
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\User\source\repos\shaked2\Photo-Album2\Photo Album2\Photo_Album2\views.py", line 178, in DataSet
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\Allkpopidols2.csv'))
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas\_libs\parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas\_libs\parsers.pyx", line 673, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File C:\Users\User\source\repos\shaked2\Photo-Album2\Photo Album2\Photo_Album2\static\Data\Allkpopidols2.csv does not exist: 'C:\\Users\\User\\source\\repos\\shaked2\\Photo-Album2\\Photo Album2\\Photo_Album2\\static\\Data\\Allkpopidols2.csv'
+127.0.0.1 - - [12/Apr/2020 16:40:02] "GET /DataSet HTTP/1.1" 500 -
+The thread 0xc has exited with code 0 (0x0).
+The thread 0xd has exited with code 0 (0x0).
+[2020-04-12 16:40:08,931] ERROR in app: Exception on /DataSet [GET]
+Traceback (most recent call last):
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\User\source\repos\shaked2\Photo-Album2\Photo Album2\Photo_Album2\views.py", line 178, in DataSet
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\Allkpopidols2.csv'))
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas\_libs\parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas\_libs\parsers.pyx", line 673, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File C:\Users\User\source\repos\shaked2\Photo-Album2\Photo Album2\Photo_Album2\static\Data\Allkpopidols2.csv does not exist: 'C:\\Users\\User\\source\\repos\\shaked2\\Photo-Album2\\Photo Album2\\Photo_Album2\\static\\Data\\Allkpopidols2.csv'
+127.0.0.1 - - [12/Apr/2020 16:40:08] "GET /DataSet HTTP/1.1" 500 -
+The thread 0xe has exited with code 0 (0x0).
+[2020-04-12 16:40:11,059] ERROR in app: Exception on /DataSet [GET]
+Traceback (most recent call last):
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\User\source\repos\shaked2\Photo-Album2\Photo Album2\Photo_Album2\views.py", line 178, in DataSet
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\Allkpopidols2.csv'))
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 676, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 448, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 880, in __init__
+    self._make_engine(self.engine)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 1114, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "C:\Users\User\.conda\envs\demo2\lib\site-packages\pandas\io\parsers.py", line 1891, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas\_libs\parsers.pyx", line 374, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas\_libs\parsers.pyx", line 673, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File C:\Users\User\source\repos\shaked2\Photo-Album2\Photo Album2\Photo_Album2\static\Data\Allkpopidols2.csv does not exist: 'C:\\Users\\User\\source\\repos\\shaked2\\Photo-Album2\\Photo Album2\\Photo_Album2\\static\\Data\\Allkpopidols2.csv'
+127.0.0.1 - - [12/Apr/2020 16:40:11] "GET /DataSet HTTP/1.1" 500 -
+The thread 0xf has exited with code 0 (0x0).
+The thread 0x11 has exited with code 0 (0x0).
+The thread 0x10 has exited with code 0 (0x0).
+The thread 0x14 has exited with code 0 (0x0).
+The thread 0x13 has exited with code 0 (0x0).
+The thread 0x17 has exited with code 0 (0x0).
+The thread 0x19 has exited with code 0 (0x0).
+The thread 0x1a has exited with code 0 (0x0).
+The program 'python.exe' has exited with code -1 (0xffffffff).

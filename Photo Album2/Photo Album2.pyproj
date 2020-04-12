@@ -47,7 +47,7 @@
     <Folder Include="Photo_Album2\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Photo_Album2\static\Data\all-k-pop-idols.csv" />
+    <Content Include="Photo_Album2\static\Data\Allkpopidols2.csv" />
     <Content Include="Photo_Album2\static\Data\capitals.csv" />
     <Content Include="Photo_Album2\static\Data\users.csv" />
     <Content Include="Photo_Album2\templates\Contact.html" />
