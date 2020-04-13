@@ -111,7 +111,7 @@ def photos():
         'photobook.html',
         title='Photo Album',
         year=datetime.now().year,
-        message='photos of bts' 
+        message='photos of kpop idols wins ' 
     )
 
 
