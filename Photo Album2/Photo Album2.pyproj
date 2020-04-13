@@ -52,6 +52,7 @@
     <Content Include="Photo_Album2\templates\Contact.html" />
     <Content Include="Photo_Album2\templates\DataSet.html" />
     <Content Include="Photo_Album2\templates\home.html" />
+    <Content Include="Photo_Album2\templates\kpopWins.html" />
     <Content Include="Photo_Album2\templates\login.html" />
     <Content Include="Photo_Album2\templates\data.html" />
     <Content Include="Photo_Album2\templates\register.html" />
