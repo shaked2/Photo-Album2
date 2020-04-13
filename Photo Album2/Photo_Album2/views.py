@@ -182,13 +182,13 @@ def DataModel():
 @app.route('/DataSet')
 def DataSet():
 
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\Allkpopidols2.csv'))
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv'))
     raw_data_table = df.to_html(classes = 'table table-hover')
 
 
     """Renders the contact page."""
     return render_template(
-        'DataSet1.html',
+        'kpopWins.html',
         title='This is Data Set 1 page',
         raw_data_table = raw_data_table,
         year=datetime.now().year,
