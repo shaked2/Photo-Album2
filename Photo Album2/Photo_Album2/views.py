@@ -174,7 +174,7 @@ def DataModel():
     """Renders the contact page."""
     return render_template(
         'DataModel.html',
-        title='This is my Data Model page abou UFO',
+        title='My Data',
         year=datetime.now().year,
 
     )
@@ -189,7 +189,7 @@ def DataSet():
     """Renders the contact page."""
     return render_template(
         'kpopWins.html',
-        title='This is Data Set 1 page',
+        title='Page 1',
         raw_data_table = raw_data_table,
         year=datetime.now().year,
        
