@@ -121,7 +121,7 @@ def data():
     """Renders the about page."""
     return render_template(
         'data.html',
-        title='data Model',
+        title='Data Model',
         year=datetime.now().year,
     )
 
