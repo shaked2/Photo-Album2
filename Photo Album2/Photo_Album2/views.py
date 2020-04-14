@@ -123,7 +123,6 @@ def data():
         'data.html',
         title='data Model',
         year=datetime.now().year,
-        message=' Explanatons of the data ' 
     )
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -192,5 +191,5 @@ def DataSet():
         title='Page 1',
         raw_data_table = raw_data_table,
         year=datetime.now().year,
-       
+       message=' The first columns shows the Idol group, second shows the year, the third columns shows us all the wins combined for every group. All the other ones show us the music shows.' 
     )
