@@ -193,3 +193,40 @@ def DataSet():
         year=datetime.now().year,
        message=' The first columns shows the Idol group, second shows the year, the third columns shows us all the wins combined for every group. All the other ones show us the music shows.' 
     )
+
+
+import matplotlib.pyplot as plt
+
+from matplotlib.figure import Figure
+
+from MyFinalProject.Models.plot_service_functions import plot_to_img
+
+
+
+import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
+from MyFinalProject.Models.plot_service_functions import plot_to_img
+@app.route('/Kpop' , methods = ['GET' , 'POST'])
+def plot_demo():
+    df = pd.read_csv(path.join(path.dirname(__file__),
+                               'static/data/kpopWins.csv'))
+    df = df.drop(['Lat' , 'Long' , 'Province/State'], 1)
+    df = df.rename(columns={'Country/Region': 'Country'})
+    df = df.groupby('Country').sum()
+    df = df.loc[['Israel' , 'France' , 'Italy' , 'Spain' , 'United Kingdom']]
+    df = df.transpose()
+    df = df.reset_index()
+    df = df.drop(['index'], 1)
+    df = df.drop(['index'], 1)
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    df.plot(ax = ax , kind = 'line')
+    chart = plot_to_img(fig)
+    return render_template(
+        'plot_demo.html',
+        img_under_construction = '/static/imgs/under_construction.png',
+        chart = chart ,
+        height = "300" ,
+        width = "750"
+    )
+
