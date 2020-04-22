@@ -42,35 +42,6 @@ db_Functions = create_LocalDatabaseServiceRoutines()
 
 
 
-@app.route('/Query', methods=['GET', 'POST'])
-def Query():
-
-    Name = None
-    capital = ''
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\capitals.csv'))
-    df = df.set_index('Country')
-
-    form = QueryFormStructure(request.form)
-     
-    if (request.method == 'POST' ):
-        name = form.name.data
-        if (name in df.index):
-            capital = df.loc[name,'Capital']
-        else:
-            capital = name + ', no such country'
-        form.name.data = ''
-
-    raw_data_table = df.to_html(classes = 'table table-hover')
-
-    return render_template('Query.html', 
-            form = form, 
-            name = capital, 
-            raw_data_table = raw_data_table,
-            title='Query by Shaked',
-            year=datetime.now().year,
-            message='Enter a name of a state and get the capital of that place '
-        )
-
 
 @app.route('/')
 @app.route('/home')
@@ -195,19 +166,12 @@ def DataSet():
     )
 
 
-import matplotlib.pyplot as plt
-
-from matplotlib.figure import Figure
-
-from MyFinalProject.Models.plot_service_functions import plot_to_img
-
 
 
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
-from MyFinalProject.Models.plot_service_functions import plot_to_img
-@app.route('/Kpop' , methods = ['GET' , 'POST'])
-def plot_demo():
+@app.route('/Query' , methods = ['GET' , 'POST'])
+def Kpop():
     df = pd.read_csv(path.join(path.dirname(__file__),
                                'static/data/kpopWins.csv'))
     df = df.drop(['Lat' , 'Long' , 'Province/State'], 1)
@@ -223,10 +187,36 @@ def plot_demo():
     df.plot(ax = ax , kind = 'line')
     chart = plot_to_img(fig)
     return render_template(
-        'plot_demo.html',
-        img_under_construction = '/static/imgs/under_construction.png',
-        chart = chart ,
-        height = "300" ,
-        width = "750"
+        'kpop.html',
+        
     )
 
+
+@app.route('/Query', methods=['GET', 'POST'])
+def Query():
+
+    Name = None
+    capital = ''
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv'))
+    df = df.set_index('Country')
+
+    form = QueryFormStructure(request.form)
+     
+    if (request.method == 'POST' ):
+        name = form.name.data
+        if (name in df.index):
+            capital = df.loc[name,'Capital']
+        else:
+            capital = name + ', no such country'
+        form.name.data = ''
+
+    raw_data_table = df.to_html(classes = 'table table-hover')
+
+    return render_template('Kpop.html', 
+            form = form, 
+            name = capital, 
+            raw_data_table = raw_data_table,
+            title='Query by Shaked',
+            year=datetime.now().year,
+            message='Bla bla bla kpop  :( doesnt work bla bla bla '
+        )

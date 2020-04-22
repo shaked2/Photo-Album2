@@ -52,9 +52,13 @@
     <Content Include="Photo_Album2\templates\Contact.html" />
     <Content Include="Photo_Album2\templates\DataSet.html" />
     <Content Include="Photo_Album2\templates\home.html" />
+    <Content Include="Photo_Album2\templates\Kpop.html" />
     <Content Include="Photo_Album2\templates\kpopWins.html" />
     <Content Include="Photo_Album2\templates\login.html" />
     <Content Include="Photo_Album2\templates\data.html" />
+    <Content Include="Photo_Album2\templates\Query.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Photo_Album2\templates\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="Photo_Album2\static\content\bootstrap.css" />
@@ -79,7 +83,7 @@
     <Content Include="Photo_Album2\static\scripts\respond.js" />
     <Content Include="Photo_Album2\static\scripts\respond.min.js" />
     <Content Include="Photo_Album2\static\scripts\_references.js" />
-    <Content Include="Photo_Album2\templates\about.html" />
+    <Content Include="Photo_Album2\templates\About.html" />
     <Content Include="Photo_Album2\templates\photobook.html" />
     <Content Include="Photo_Album2\templates\index.html" />
     <Content Include="Photo_Album2\templates\layout.html" />
