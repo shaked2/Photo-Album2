@@ -1,7 +1,7 @@
 """
 Routes and views for the flask application.
 """
-
+from flask_bootstrap import Bootstrap
 from datetime import datetime
 from flask import render_template
 from Photo_Album2 import app
@@ -74,7 +74,6 @@ def about():
 
 
 
-
 @app.route('/photos')
 def photos():
     """Renders the about page."""
@@ -84,7 +83,6 @@ def photos():
         year=datetime.now().year,
         message='photos of kpop idols wins ' 
     )
-
 
 
 @app.route('/data')
@@ -168,55 +166,32 @@ def DataSet():
 
 
 
-import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
-@app.route('/Query' , methods = ['GET' , 'POST'])
-def Kpop():
-    df = pd.read_csv(path.join(path.dirname(__file__),
-                               'static/data/kpopWins.csv'))
-    df = df.drop(['Lat' , 'Long' , 'Province/State'], 1)
-    df = df.rename(columns={'Country/Region': 'Country'})
-    df = df.groupby('Country').sum()
-    df = df.loc[['Israel' , 'France' , 'Italy' , 'Spain' , 'United Kingdom']]
-    df = df.transpose()
-    df = df.reset_index()
-    df = df.drop(['index'], 1)
-    df = df.drop(['index'], 1)
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    df.plot(ax = ax , kind = 'line')
-    chart = plot_to_img(fig)
-    return render_template(
-        'kpop.html',
-        
-    )
-
-
 @app.route('/Query', methods=['GET', 'POST'])
 def Query():
 
-    Name = None
-    capital = ''
+    Name = ''
+    Combined = ''
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv'))
-    df = df.set_index('Country')
+    df = df.set_index('KpopIdols')
+    bootstrap = Bootstrap(app)
 
     form = QueryFormStructure(request.form)
      
     if (request.method == 'POST' ):
         name = form.name.data
         if (name in df.index):
-            capital = df.loc[name,'Capital']
+            Combined = df.loc[name,'Combined']
         else:
-            capital = name + ', no such country'
+            Combined = name + ', no such country'
         form.name.data = ''
 
     raw_data_table = df.to_html(classes = 'table table-hover')
 
     return render_template('Kpop.html', 
             form = form, 
-            name = capital, 
+            name = Combined, 
             raw_data_table = raw_data_table,
             title='Query by Shaked',
             year=datetime.now().year,
-            message='Bla bla bla kpop  :( doesnt work bla bla bla '
+            message='Kpop  :( doesnt work bla bla bla '
         )
