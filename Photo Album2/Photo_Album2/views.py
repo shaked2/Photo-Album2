@@ -20,7 +20,6 @@ import pandas as pd
 
 import json 
 import requests
-
 import io
 import base64
 
@@ -35,7 +34,8 @@ from wtforms import ValidationError
 from Photo_Album2.Models.QueryFormStructure import QueryFormStructure 
 from Photo_Album2.Models.QueryFormStructure import LoginFormStructure 
 from Photo_Album2.Models.QueryFormStructure import UserRegistrationFormStructure 
-
+import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 db_Functions = create_LocalDatabaseServiceRoutines()
 
 
@@ -125,7 +125,8 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
-            #return redirect('<were to go if login is good!')
+            return redirect('Query')
+           
         else:
             flash('Error in - Username and/or password')
    
@@ -177,21 +178,40 @@ def Query():
 
     form = QueryFormStructure(request.form)
      
+    #if (request.method == 'POST' ):
+        #name = form.name.data
+        #if (name in df.index):
+           # Combined = df.loc[name,'Combined']
+        #else:
+            #Combined = name + ', no such Kpop group'
+       
+@app.route('/Query' , methods = ['GET' , 'POST'])
+def plot_demo():
+    chart = ''
+    form = QueryFormStructure(request.form)
     if (request.method == 'POST' ):
-        name = form.name.data
-        if (name in df.index):
-            Combined = df.loc[name,'Combined']
-        else:
-            Combined = name + ', no such country'
-        form.name.data = ''
+        df = pd.read_csv(path.join(path.dirname(__file__),
+        'static/data/kpopWins.csv'))
+        df = df.drop(['Lat' , 'Long' , 'Province/State'], 1)
+        df = df.rename(columns={'Country/Region': 'Country'})
+        df = df.groupby('KpopIdols').sum()
+        df = df.loc[['BTS' , 'Twice' , 'Itzy' , 'Everglow' , 'Exo']]
+        df = df.transpose()
+        df = df.reset_index()
+        df = df.drop(['index'], 1)
+        df = df.tail(30)
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        df.plot(ax = ax , kind = 'line')
+        chart = plot_to_img(fig)
 
-    raw_data_table = df.to_html(classes = 'table table-hover')
+    return render_template(
+        'Query.html',
+        img_under_construction = '/static/imgs/under_construction.png',
+        chart = chart ,
+        height = "300" ,
+        width = "750"
 
-    return render_template('Kpop.html', 
-            form = form, 
-            name = Combined, 
-            raw_data_table = raw_data_table,
-            title='Query by Shaked',
-            year=datetime.now().year,
-            message='Kpop  :( doesnt work bla bla bla '
+ 
+
         )

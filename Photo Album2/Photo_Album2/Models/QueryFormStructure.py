@@ -22,7 +22,7 @@ from wtforms.validators import DataRequired
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class QueryFormStructure(FlaskForm):
-    name   = StringField('Country Name:  ' , validators = [DataRequired()])
+    name   = StringField('Kpop idol name :  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
 
 
@@ -37,8 +37,8 @@ class QueryFormStructure(FlaskForm):
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class LoginFormStructure(FlaskForm):
-    username   = StringField('User name:  ' , validators = [DataRequired("you must write a username" )])
-    password   = PasswordField('Pass word:  ' , validators = [DataRequired(" you must write a password")])
+    username   = StringField('Username:  ' , validators = [DataRequired("you must write a username" )])
+    password   = PasswordField('Password:  ' , validators = [DataRequired(" you must write a password")])
     submit = SubmitField('Submit')
 
 
@@ -56,12 +56,12 @@ class LoginFormStructure(FlaskForm):
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class UserRegistrationFormStructure(FlaskForm):
-    FirstName  = StringField('First name:  ' , validators = [DataRequired()])
-    LastName   = StringField('Last name:  ' , validators = [DataRequired()])
+    FirstName  = StringField('Firstname:  ' , validators = [DataRequired()])
+    LastName   = StringField('Lastname:  ' , validators = [DataRequired()])
     PhoneNum   = StringField('Phone number:  ' , validators = [DataRequired()])
     EmailAddr  = StringField('E-Mail:  ' , validators = [DataRequired()])
-    username   = StringField('User name:  ' , validators = [DataRequired()])
-    password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
+    username   = StringField('Username:  ' , validators = [DataRequired()])
+    password   = PasswordField('Password:  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
 
 ## This class have the fields that the user can set, to have the query parameters for analysing the data
