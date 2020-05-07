@@ -173,27 +173,27 @@ def DataSet():
 def Query():
 
     Name = None
-    capital = ''
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\capitals.csv'))
-    df = df.set_index('Country')
+    combined = ''
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv'))
+    df = df.set_index('KpopIdols')
 
     form = QueryFormStructure(request.form)
      
     if (request.method == 'POST' ):
         name = form.name.data
         if (name in df.index):
-            capital = df.loc[name,'Capital']
+            combined = df.loc[name,'Combined']
         else:
-            capital = name + ', no such country'
+            combined = name + ', no such name'
         form.name.data = ''
 
     raw_data_table = df.to_html(classes = 'table table-hover')
 
     return render_template('Query.html', 
             form = form, 
-            name = capital, 
+            name = combined, 
             raw_data_table = raw_data_table,
-            title='Query by the user',
+            title='Query by the Shaked',
             year=datetime.now().year,
             message='This page will use the web forms to get user input'
         )
