@@ -174,6 +174,7 @@ def Query():
 
     Name = None
     combined = ''
+    reqName = ''
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv'))
     df = df.set_index('KpopIdols')
 
@@ -183,17 +184,20 @@ def Query():
         name = form.name.data
         if (name in df.index):
             combined = df.loc[name,'Combined']
+            reqName = name
+
         else:
-            combined = name + ', no such name'
+            combined = name + ', does not exist'
         form.name.data = ''
 
     raw_data_table = df.to_html(classes = 'table table-hover')
 
     return render_template('Query.html', 
             form = form, 
+            reqName = reqName,
             name = combined, 
             raw_data_table = raw_data_table,
-            title='Query by the Shaked',
+            title='Query by Shaked',
             year=datetime.now().year,
-            message='This page will use the web forms to get user input'
+            message='The user will choose a kpop idol and will get the combined wins!'
         )

@@ -7,6 +7,7 @@
 
 <form method=post>
     {{ form.csrf }}
+
     <table>
         <tr>
             <td class="input text"> {{ form.name.label }} </td>
@@ -14,12 +15,13 @@
         </tr>
         <tr>
             <td></td>
-            <td class="input submit"> <input type="submit" value="Capital"> </td>
+            <td class="input submit"> <input type="submit" value="Enter"> </td>
         </tr>
     </table>
 </form>
 
-<p><h1>Combined is : <b>{{name}}</b></h1></p>
+<p><h1>{{reqName}} Combined is : <b>{{name}} </b></h1></p>
+
 
 <h3> Table is </h3>
 {{ raw_data_table | safe}}
