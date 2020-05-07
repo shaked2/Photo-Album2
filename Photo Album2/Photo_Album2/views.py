@@ -167,51 +167,33 @@ def DataSet():
 
 
 
+
+       
 @app.route('/Query', methods=['GET', 'POST'])
 def Query():
 
-    Name = ''
-    Combined = ''
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv'))
-    df = df.set_index('KpopIdols')
-    bootstrap = Bootstrap(app)
+    Name = None
+    capital = ''
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\capitals.csv'))
+    df = df.set_index('Country')
 
     form = QueryFormStructure(request.form)
      
-    #if (request.method == 'POST' ):
-        #name = form.name.data
-        #if (name in df.index):
-           # Combined = df.loc[name,'Combined']
-        #else:
-            #Combined = name + ', no such Kpop group'
-       
-@app.route('/Query' , methods = ['GET' , 'POST'])
-def plot_demo():
-    chart = ''
-    form = QueryFormStructure(request.form)
     if (request.method == 'POST' ):
-        df = pd.read_csv(path.join(path.dirname(__file__),
-        'static/data/kpopWins.csv'))
-        df = df.drop(['Lat' , 'Long' , 'Province/State'], 1)
-        df = df.rename(columns={'Country/Region': 'Country'})
-        df = df.groupby('KpopIdols').sum()
-        df = df.loc[['BTS' , 'Twice' , 'Itzy' , 'Everglow' , 'Exo']]
-        df = df.transpose()
-        df = df.reset_index()
-        df = df.drop(['index'], 1)
-        df = df.tail(30)
-        fig = plt.figure()
-        ax = fig.add_subplot(111)
-        df.plot(ax = ax , kind = 'line')
-        chart = plot_to_img(fig)
+        name = form.name.data
+        if (name in df.index):
+            capital = df.loc[name,'Capital']
+        else:
+            capital = name + ', no such country'
+        form.name.data = ''
 
-    return render_template(
-        'Query.html',
-        img_under_construction = '/static/imgs/under_construction.png',
-        chart = chart ,
-        height = "300" ,
-        width = "750"
+    raw_data_table = df.to_html(classes = 'table table-hover')
 
- 
-
+    return render_template('Query.html', 
+            form = form, 
+            name = capital, 
+            raw_data_table = raw_data_table,
+            title='Query by the user',
+            year=datetime.now().year,
+            message='This page will use the web forms to get user input'
         )
