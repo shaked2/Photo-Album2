@@ -1,19 +1,31 @@
 ﻿{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
-    <html>
-    <head>
-        <title>HTML Backgorund Color</title>
-    </head>
-    <body style="background-color:#D4BAFF;">
-    </body>
-    </html>
+
+
+<body style="background-color:#D4BAFF;">
+</body>
 <h2>{{ title }}.</h2>
 <h3>{{ message }}</h3>
 
 
 
-{{ raw_data_table | safe}}
-
-
+<div class="row my-grid-borders">
+    <div class="col-md-5 my-grid-borders">
+        <form method="post">
+            {{ form1.csrf_token }}
+            <input class="btn btn-success" type="submit" name="action" value="Expand" style="background-color:rebeccapurple;color:black;" target="_blank">
+        </form>
+    </div>
+    <div class="col-md-5 my-grid-borders">
+        <form method="post">
+            {{ form2.csrf_token }}
+            <input class="btn btn-danger" type="submit" name="action" value="Collapse" style="background-color:rebeccapurple;color:black;" target="_blank">
+        </form>
+    </div>
+    <div class="row my-grid-borders">
+        {{ raw_data_table | safe}}
+    </div>
+</div>
 {% endblock %}

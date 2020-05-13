@@ -1,6 +1,8 @@
 """
 Used structures and classes
 """
+from wtforms import SubmitField
+from flask_wtf import FlaskForm
 from os import path
 import json
 import pandas as pd
@@ -58,4 +60,14 @@ class LocalDatabaseServiceRoutines(object):
         dfNew = pd.DataFrame([[User.FirstName.data, User.LastName.data, User.PhoneNum.data, User.EmailAddr.data, User.username.data, User.password.data]], columns=['FirstName', 'LastName', 'PhoneNum', 'EmailAddr',  'username', 'password'])
         dfComplete = df.append(dfNew, ignore_index=True)
         self.WriteCSVToFile_users(dfComplete)
+
+class ExpandForm(FlaskForm):
+    submit1 = SubmitField('Expand')
+    name="Expand"
+    value="Expand"
+ 
+class CollapseForm(FlaskForm):
+    submit2 = SubmitField('Collapse')
+    name="Collapse"
+    value="Collapse"
 
