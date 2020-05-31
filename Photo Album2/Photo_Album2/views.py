@@ -42,7 +42,12 @@ from Photo_Album2.Models.LocalDatabaseRoutines import CollapseForm
 db_Functions = create_LocalDatabaseServiceRoutines()
 
 
-
+def plot_to_img(fig):
+    pngImage = io.BytesIO()
+    FigureCanvas(fig).print_png(pngImage)
+    pngImageB64String = "data:image/png;base64,"
+    pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
+    return pngImageB64String
 
 
 
@@ -211,4 +216,13 @@ def Query():
             title='Query by Shaked',
             year=datetime.now().year,
             message='The user will choose a kpop idol and will get the combined wins!'
+
+  
+          
+           
+           
+
+
+
+          
         )

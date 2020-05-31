@@ -23,8 +23,20 @@
 <p><h1>{{reqName}} Combined is : <b>{{name}} </b></h1></p>
 
 
-<h3> Table is </h3>
-{{ raw_data_table | safe}}
 
+
+<img src={{ chart }} class="img-thumbnail" alt="The Graph is here" height={{height}} width={{ width }}>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</form>
+
+
+<button data-target="#collapse" data-toggle="collapse" class="btn btn-default">DataSet click here</button>
+<div id="collapse" class="collapse">
+    {{ raw_data_table | safe}}
+</div>
 
     {% endblock %}
