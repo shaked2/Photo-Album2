@@ -28,7 +28,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Photo_Album2\Models\DataQuery.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Photo_Album2\Models\LocalDatabaseRoutines.py" />
+    <Compile Include="Photo_Album2\Models\plot_service_functions.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Photo_Album2\Models\QueryFormStructure.py">
       <SubType>Code</SubType>
     </Compile>
@@ -48,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Photo_Album2\static\Data\capitals.csv" />
+    <Content Include="Photo_Album2\static\Data\chart_work.csv" />
     <Content Include="Photo_Album2\static\Data\kpopWins.csv" />
     <Content Include="Photo_Album2\static\Data\users.csv" />
     <Content Include="Photo_Album2\templates\Contact.html" />
@@ -57,6 +64,7 @@
     <Content Include="Photo_Album2\templates\kpopWins.html" />
     <Content Include="Photo_Album2\templates\login.html" />
     <Content Include="Photo_Album2\templates\data.html" />
+    <Content Include="Photo_Album2\templates\plot_demo.html" />
     <Content Include="Photo_Album2\templates\Query.html">
       <SubType>Code</SubType>
     </Content>

@@ -34,22 +34,41 @@ from Photo_Album2.Models.QueryFormStructure import QueryFormStructure
 from Photo_Album2.Models.QueryFormStructure import LoginFormStructure 
 from Photo_Album2.Models.QueryFormStructure import UserRegistrationFormStructure 
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from matplotlib import style
 from matplotlib.figure import Figure
 from flask_bootstrap import Bootstrap
 bootstrap = Bootstrap(app)
 from Photo_Album2.Models.LocalDatabaseRoutines import ExpandForm
 from Photo_Album2.Models.LocalDatabaseRoutines import CollapseForm
 db_Functions = create_LocalDatabaseServiceRoutines()
+from Photo_Album2.Models.plot_service_functions import plot_to_img
 
 
-def plot_to_img(fig):
-    pngImage = io.BytesIO()
-    FigureCanvas(fig).print_png(pngImage)
-    pngImageB64String = "data:image/png;base64,"
-    pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
-    return pngImageB64String
 
 
+
+
+       
+@app.route('/plot_demo' , methods = ['GET' , 'POST'])
+def plot_demo():
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv'))
+    df = df.head(6)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    plt.bar(x=df['KpopIdols'],height=df['TheShow'])
+    chart = plot_to_img(fig)
+     
+    return render_template(
+        'plot_demo.html',
+         chart = chart ,
+         height = "300" ,
+         width = "750"
+
+
+
+   )
 
 @app.route('/')
 @app.route('/home')
@@ -133,7 +152,7 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
-            return redirect('Query')
+            return redirect('plot_demo')
            
         else:
             flash('Error in - Username and/or password')
@@ -184,45 +203,3 @@ def DataSet():
 
 
 
-       
-@app.route('/Query', methods=['GET', 'POST'])
-def Query():
-
-    Name = None
-    combined = ''
-    reqName = ''
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv'))
-    df = df.set_index('KpopIdols')
-
-    form = QueryFormStructure(request.form)
-     
-    if (request.method == 'POST' ):
-        name = form.name.data
-        if (name in df.index):
-            combined = df.loc[name,'Combined']
-            reqName = name
-
-        else:
-            combined = name + ', does not exist'
-        form.name.data = ''
-
-    raw_data_table = df.to_html(classes = 'table table-hover')
-
-    return render_template('Query.html', 
-            form = form, 
-            reqName = reqName,
-            name = combined, 
-            raw_data_table = raw_data_table,
-            title='Query by Shaked',
-            year=datetime.now().year,
-            message='The user will choose a kpop idol and will get the combined wins!'
-
-  
-          
-           
-           
-
-
-
-          
-        )
