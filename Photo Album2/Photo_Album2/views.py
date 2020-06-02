@@ -31,6 +31,7 @@ from wtforms import ValidationError
 
 
 from Photo_Album2.Models.QueryFormStructure import QueryFormStructure 
+from Photo_Album2.Models.QueryFormStructure import QueryFormStructure2
 from Photo_Album2.Models.QueryFormStructure import LoginFormStructure 
 from Photo_Album2.Models.QueryFormStructure import UserRegistrationFormStructure 
 import matplotlib.pyplot as plt
@@ -42,9 +43,42 @@ bootstrap = Bootstrap(app)
 from Photo_Album2.Models.LocalDatabaseRoutines import ExpandForm
 from Photo_Album2.Models.LocalDatabaseRoutines import CollapseForm
 db_Functions = create_LocalDatabaseServiceRoutines()
+from Photo_Album2.Models.LocalDatabaseRoutines import get_Combined_choices
 from Photo_Album2.Models.plot_service_functions import plot_to_img
 
 
+@app.route('/Query3', methods=['GET', 'POST'])
+def Query2():
+
+    form = QueryFormStructure(request.form) #gets the form we created in QueryFormStructure in models.
+    Name = ''
+    Type2 = ''
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv')) #reads csv (data)
+    df = df.head(15)
+    df = df.set_index('KpopIdols')
+
+    raw_data_table = df.to_html(classes = 'table table-hover')
+
+    #Checks if the kpopidol exists and than if it is, returns its second idol.
+    if (request.method == 'POST' ):
+        name = form.name.data
+        KpopIdols = name
+        if (name in df.index):
+            Type= df.loc[name, "Exo"]
+            raw_data_table = ""
+        else:
+            Type = name + ', no such kpop idol'
+        form.name.data = ''
+
+
+    """Renders the query page."""
+    return render_template(
+        'Query3.html',
+        form = form, 
+        name = Combined,
+        title='Project in data science',
+        message='Second group of kpop idol:'
+    )
 
 
 
@@ -53,7 +87,7 @@ from Photo_Album2.Models.plot_service_functions import plot_to_img
 @app.route('/plot_demo' , methods = ['GET' , 'POST'])
 def plot_demo():
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv'))
-    df = df.head(6)
+    df = df.head(15)
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -64,7 +98,7 @@ def plot_demo():
         'plot_demo.html',
          chart = chart ,
          height = "300" ,
-         width = "750"
+         width = "2000"
 
 
 
@@ -152,7 +186,7 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
-            return redirect('plot_demo')
+            return redirect('query3')
            
         else:
             flash('Error in - Username and/or password')
@@ -200,6 +234,59 @@ def DataSet():
     )
 
 
+@app.route('/Query3', methods=['GET', 'POST'])
+def Query3():
+
+    form = QueryFormStructure(request.form) #gets the form we created in QueryFormStructure in models.
+    form.Combined.choices = () #lets us use what we created in LocalDatabaseRoutines
+    Combined = ''
+    chart = ''
+    groupname = ''
+    Type2 = ''
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\kpopWins.csv')) #reads csv (data)
+    df = df.head(15)
+    df = df.set_index('KpopIdols')
+
+    raw_data_table = df.to_html(classes = 'table table-hover')
+
+    #Checks if the kpopidol exists and than if it is, returns its second type.
+    if (request.method == 'POST' ):
+        groupname = form.name.data
+        KpopIdols = name
+        if (name in df.index):
+            df = df.loc[form.Combined.data]
+            raw_data_table = ""
+        else:
+            Type = name + ', no such kpop idol'
+        form.name.data = ''
 
 
+    #"""Renders the query page."""
+    #return render_template(
+        #'Query3.html',
+        #form = form, 
+        #name = Type,
+        #title='Project in data science',
+        #message='Second group of kpop idol:'
+    #)
+#@app.route('/query3', methods=['GET', 'POST'])
+#def query3():
 
+    #form = QueryFormStructure(request.form) #gets the form we created in QueryFormStructure in models.
+   # form.poketypes.choices = get_poketypes_choices() #lets us use what we created in LocalDatabaseRoutines
+   # poketypes = ''
+   # chart = ''
+   # if (request.method == 'POST' ):
+       # df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\Types.csv')) #reads data
+        #df = df.set_index('type') #sets the index to "type"
+       # Types = form.poketypes.data
+       # df = df.loc[form.poketypes.data] #makes it that it only gets what the user selected
+       # df = df.transpose()#changes rows to colums and vice versa, we use this to organize things so it's easier to use.
+       # df = df.reset_index()
+       # df = df.drop(['index'],1) #drops what we don't need
+
+        #the following 4 lines render the actual graph
+       # fig = plt.figure()
+       # ax = fig.add_subplot(111)
+      #  df.plot(ax = ax , kind = 'bar')
+      #  chart = plot_to_img(fig)

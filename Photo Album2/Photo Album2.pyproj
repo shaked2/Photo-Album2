@@ -56,6 +56,7 @@
     <Content Include="Photo_Album2\static\Data\capitals.csv" />
     <Content Include="Photo_Album2\static\Data\chart_work.csv" />
     <Content Include="Photo_Album2\static\Data\kpopWins.csv" />
+    <Content Include="Photo_Album2\static\Data\Types.csv" />
     <Content Include="Photo_Album2\static\Data\users.csv" />
     <Content Include="Photo_Album2\templates\Contact.html" />
     <Content Include="Photo_Album2\templates\DataSet.html" />
@@ -68,6 +69,8 @@
     <Content Include="Photo_Album2\templates\Query.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Photo_Album2\templates\Query2.html" />
+    <Content Include="Photo_Album2\templates\Query3.html" />
     <Content Include="Photo_Album2\templates\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="Photo_Album2\static\content\bootstrap.css" />

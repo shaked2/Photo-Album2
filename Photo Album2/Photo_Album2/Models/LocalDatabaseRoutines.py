@@ -10,6 +10,13 @@ import pandas as pd
 def create_LocalDatabaseServiceRoutines():
     return LocalDatabaseServiceRoutines()
 
+def get_Combined_choices():
+    df = pd.read_csv(path.join(path.dirname(__file__), "..\\static\\Data\\kpopWins.csv"))
+    df = df.groupby('Combined').sum()
+    l = df.index
+    m = list(zip(l , l))
+    return m
+
 class LocalDatabaseServiceRoutines(object):
     def __init__(self):
         self.name = 'Data base service routines'

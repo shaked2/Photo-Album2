@@ -26,6 +26,12 @@ class QueryFormStructure(FlaskForm):
     submit = SubmitField('Submit')
 
 
+class QueryFormStructure2(FlaskForm):
+    groupname = StringField('Kpop idol name :  ' , validators = [DataRequired()])
+    submit = SubmitField('Submit')
+
+
+
 
 
 ## This class have the fields that are part of the Login form.
